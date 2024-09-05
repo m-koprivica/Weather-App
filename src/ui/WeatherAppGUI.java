@@ -13,6 +13,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import static util.ImagePathFinder.findWeatherBackground;
+import static util.ImagePathFinder.findWeatherIcon;
+
 public class WeatherAppGUI extends JFrame {
     private final WeatherApp weatherApp;
     private final JPanel hourlyWeatherInfoPanel;
@@ -93,7 +96,7 @@ public class WeatherAppGUI extends JFrame {
             currentWeatherInfoBox.setBorder(border);
             currentWeatherInfoBox.setBackground(new Color(200, 200, 200));
 
-            JPanel backgroundImagePanel = new BackgroundForecastPanel(weatherApp.findWeatherBackground((int) code, timeStatus));
+            JPanel backgroundImagePanel = new BackgroundForecastPanel(findWeatherBackground((int) code, timeStatus));
             backgroundImagePanel.add(currentWeatherInfoBox);
             currentWeatherInfoPanel.add(backgroundImagePanel, BorderLayout.CENTER);
         });
@@ -166,7 +169,7 @@ public class WeatherAppGUI extends JFrame {
     }
 
     private JLabel getWeatherIcon(Long weatherCode, String timeStatus) {
-        String weatherIconPath = weatherApp.findWeatherIcon(weatherCode.intValue(), timeStatus);
+        String weatherIconPath = findWeatherIcon(weatherCode.intValue(), timeStatus);
         ImageIcon icon = new ImageIcon(getClass().getResource(weatherIconPath));
 
         Image image = icon.getImage();
