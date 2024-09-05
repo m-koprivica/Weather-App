@@ -7,21 +7,7 @@ public class ImagePathFinder {
     public static String findWeatherIcon(int weatherCode, String timeStatus) {
         String weatherIconPath = "/assets/icons/";
 
-        if (isClear(weatherCode)) {
-            weatherIconPath += "clear";
-        } else if (isCloudy(weatherCode)) {
-            weatherIconPath += "cloudy";
-        } else if (isFoggy(weatherCode)) {
-            weatherIconPath += "foggy";
-        } else if (isRainy(weatherCode)) {
-            weatherIconPath += "rainy";
-        } else if (isSnowy(weatherCode)) {
-            weatherIconPath += "snowy";
-        } else if (isThunderStorm(weatherCode)) {
-            weatherIconPath += "thunderstorm";
-        } else {
-            weatherIconPath += "sandstorm";
-        }
+        weatherIconPath = appendWeatherNameToPath(weatherCode, weatherIconPath);
 
         weatherIconPath += "_" + timeStatus + ".png";
         return weatherIconPath;
@@ -32,26 +18,31 @@ public class ImagePathFinder {
     public static String findWeatherBackground(int weatherCode, String timeStatus) {
         String weatherIconPath = "/assets/backgrounds/";
 
-        if (isClear(weatherCode)) {
-            weatherIconPath += "clear";
-        } else if (isCloudy(weatherCode)) {
-            weatherIconPath += "cloudy";
-        } else if (isFoggy(weatherCode)) {
-            weatherIconPath += "foggy";
-        } else if (isRainy(weatherCode)) {
-            weatherIconPath += "rainy";
-        } else if (isSnowy(weatherCode)) {
-            weatherIconPath += "snowy";
-        } else if (isThunderStorm(weatherCode)) {
-            weatherIconPath += "thunderstorm";
-        } else {
-            weatherIconPath += "sandstorm";
-        }
+        weatherIconPath = appendWeatherNameToPath(weatherCode, weatherIconPath);
 
         weatherIconPath += "_" + timeStatus + ".jpeg";
         return weatherIconPath;
     }
 
+    // Adds weather name to imagePath given the weatherCode.
+    private static String appendWeatherNameToPath(int weatherCode, String imagePath) {
+        if (isClear(weatherCode)) {
+            imagePath += "clear";
+        } else if (isCloudy(weatherCode)) {
+            imagePath += "cloudy";
+        } else if (isFoggy(weatherCode)) {
+            imagePath += "foggy";
+        } else if (isRainy(weatherCode)) {
+            imagePath += "rainy";
+        } else if (isSnowy(weatherCode)) {
+            imagePath += "snowy";
+        } else if (isThunderStorm(weatherCode)) {
+            imagePath += "thunderstorm";
+        } else {
+            imagePath += "sandstorm";
+        }
+        return imagePath;
+    }
 
     // Returns true if the weather code corresponds to the following types of weather
     // Used to find appropriate weather icon.

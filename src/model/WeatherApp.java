@@ -111,7 +111,6 @@ public class WeatherApp {
             JSONParser parser = new JSONParser();
             JSONObject jsonResponse = (JSONObject) parser.parse(response.toString());
 
-            System.out.println(jsonResponse); // todo remove
             return jsonResponse;
         } else {
             throw new Exception("GET request failed with response code: " + responseCode);
