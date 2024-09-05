@@ -54,7 +54,7 @@ public class WeatherAppGUI extends JFrame {
     private void initCurrentWeatherInfo() {
         SwingWorker<Void, Void> worker = new SwingWorker<>() {
             @Override
-            protected Void doInBackground() throws Exception {
+            protected Void doInBackground() {
                 // clear previous weather data
                 currentWeatherInfoPanel.removeAll();
                 currentWeatherInfoPanel.revalidate();
@@ -108,7 +108,7 @@ public class WeatherAppGUI extends JFrame {
     private void initHourlyWeatherInfo() {
         SwingWorker<Void, Void> worker = new SwingWorker<>() {
             @Override
-            protected Void doInBackground() throws Exception {
+            protected Void doInBackground() {
                 // clear previous weather data
                 hourlyWeatherInfoPanel.removeAll();
                 hourlyWeatherInfoPanel.revalidate();
@@ -133,8 +133,8 @@ public class WeatherAppGUI extends JFrame {
             // change isDay entries (0, 1) to strings (night, day)
             // used to append to image icon path
             List<String> isDayStrings = new ArrayList<>();
-            for (int i = 0; i < isDay.size(); i++) {
-                if ((long) isDay.get(i) == 1) {
+            for (Object o : isDay) {
+                if ((long) o == 1) {
                     isDayStrings.add("day");
                 } else {
                     isDayStrings.add("night");
